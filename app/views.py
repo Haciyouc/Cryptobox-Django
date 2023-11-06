@@ -310,7 +310,7 @@ def attaque_brute_force_un_zero_3char_requests(request):
             return render(request, 'brute_force_un_zero_3char.html', context) 
         
 
-        
+##############     
 def attaquebruteforce__un_zero_3char_requests(username):
     success = False
     login_url = "http://localhost/cryptobox/login.php"
