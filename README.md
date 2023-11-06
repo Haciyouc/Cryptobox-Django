@@ -66,3 +66,5 @@ cd ssadd
 11. Lancez le serveur Django sur une machine locale pour tester l'installation avec la commande : `python manage.py runserver`.
 
 Si vous voyez le message "Starting development server at http://ip@:port/", l'installation s'est déroulée avec succès, et le serveur de développement est en cours d'exécution à l'adresse locale (par exemple : 127.0.0.1) et sur un certain port (par exemple : 8000).
+## Dictionnaire:
+vous devez placer les dictionnaires sur le disque C:\ ou modifier le chemin de la variable du dictionnaire dans les views 
