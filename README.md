@@ -19,18 +19,33 @@ Pour installer et exécuter ce projet, suivez les étapes suivantes :
 3. Ouvrez un terminal de ligne de commande depuis ce répertoire.
 
 4. Créez un environnement virtuel pour isoler les dépendances de packages localement en utilisant la commande suivante :
-   - Sur Linux :  ```python -m venv env_name ```
-   - Sur Windows :  ```python -m venv env_name ```
+   - Sur Linux :
+      ```
+     python -m venv env_name
+     ```
+   - Sur Windows :
+     ```
+     python -m venv env_name
+     ```
 
 5. Activez l'environnement virtuel :
-   - Sur Linux :  ```source env_name/bin/activate ```
-   - Sur Windows :  ```env_name\Scripts\activate ```
+   - Sur Linux :
+     ```
+     source env_name/bin/activate
+     ```
+   - Sur Windows :
+   - ```
+     env_name\Scripts\activate
+     ```
 
-6. Installez le framework Django dans l'environnement virtuel en utilisant la commande  ```pip install django ```.
+6. Installez le framework Django dans l'environnement virtuel en utilisant la commande
+   ```
+   pip install django
+   ```
 
-7. Après avoir installé Django, placez le code téléchargé dans le même répertoire que l'environnement virtuel.
+8. Après avoir installé Django, placez le code téléchargé dans le même répertoire que l'environnement virtuel.
 
-8. Utilisez les commandes suivantes pour vous déplacer dans le répertoire du projet et installer les dépendances à partir du fichier `requirements.txt` :
+9. Utilisez les commandes suivantes pour vous déplacer dans le répertoire du projet et installer les dépendances à partir du fichier `requirements.txt` :
  ```
 cd ssadd
 ```
@@ -42,8 +57,7 @@ cd ssadd
 10. Synchronisez votre base de données pour la première fois avec la commande :
     ```
     python manage.py migrate
-    ```.
-
+    ```
 12. Créez un utilisateur initial nommé "admin" avec le mot de passe "password123" en utilisant la commande :
  ```
  python manage.py createsuperuser --email admin@exemple.com --username admin
