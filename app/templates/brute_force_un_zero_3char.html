@@ -1,0 +1,308 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CryptoWarEnigma</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- Favicons -->
+    <link href="{% static 'img/cryptography.png' %}" rel="icon">
+    <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+
+    <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'css1/sheet1.css' %}" rel="stylesheet">
+
+    <style>
+        /* Style de base pour le conteneur principal */
+        /* Style de base pour le conteneur principal */
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 260px;
+            transition: all ease-in-out 0.5s;
+            z-index: 9997;
+            transition: all 0.5s;
+            padding: 0 15px;
+            background: #000205;
+            overflow-y: auto;
+            overflow-x: hidden;
+
+
+        }
+
+        #header::-webkit-scrollbar {
+            width: 0;
+            /* Largeur de la scrollbar à zéro */
+        }
+
+        #header::-webkit-scrollbar-track {
+            background-color: transparent;
+            /* Couleur de la piste de la scrollbar */
+        }
+
+        #header::-webkit-scrollbar-thumb {
+            background-color: transparent;
+            /* Couleur de la poignée de la scrollbar */
+            border: none;
+            /* Supprime la bordure de la poignée */
+            margin-right: -16px;
+            /* Crée un espace réservé pour la barre de défilement invisible */
+        }
+
+        #hero:before {
+            content: "";
+            background: rgba(5, 13, 24, 0.3);
+            position: absolute;
+            bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+        }
+
+        #hero .hero-container {
+            position: relative;
+            z-index: 2;
+            min-width: 300px;
+            padding: 20px;
+            width: 600px;
+            margin-left: 100px;
+        }
+
+
+
+        #hero p {
+            color: #fff;
+            margin-bottom: 2px;
+            font-size: 22px;
+            font-family: "Poppins", sans-serif;
+        }
+
+        #hero p span {
+            color: #fff;
+            padding-bottom: 4px;
+            letter-spacing: 1px;
+            border-bottom: 3px solid;
+            background: black;
+        }
+
+
+        /* Style pour le titre principal (h1) */
+        .hero-container h1 {
+            font-size: 40px;
+            color: #fff;
+            /* Couleur de texte de votre choix */
+            margin-bottom: 20px;
+        }
+
+        /* Style pour le formulaire */
+        .hero-container form {
+            width: 600px;
+            margin: 20px 0;
+            text-align: center;
+
+        }
+
+        /* Style pour l'étiquette du champ "Nom d'utilisateur" */
+        .hero-container label {
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 2px;
+            font-size: 22px;
+            /* Couleur de texte de votre choix */
+        }
+
+        /* Style pour le champ "Nom d'utilisateur" */
+        .hero-container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            /* Couleur de bordure de votre choix */
+            border-radius: 40px;
+            margin: 5px 0;
+            color: #fff;
+            background-color: #333;
+        }
+
+        /* Style pour le bouton "commencer" */
+        .hero-container input[type="submit"] {
+            background-color: #333;
+            /* Couleur de fond de votre choix */
+            color: #fff;
+            /* Couleur de texte pour le bouton */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+
+
+        /* Style au survol du bouton "commencer" */
+        .hero-container input[type="submit"]:hover {
+            background-color: rgb(83, 83, 81);
+            /* Nouvelle couleur de fond au survol */
+        }
+
+        /* Style pour les messages */
+        .hero-container_message {
+            margin-top: 20px;
+        }
+
+        /* Style pour les titres des messages (h2) */
+        .hero-container_message h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Style pour les paragraphes dans les messages */
+        .hero-container_message p {
+            font-size: 16px;
+        }
+        .error-message {
+            text-align: center;
+            background-color: #ff0000;
+            /* Couleur de fond pour le message d'erreur */
+            color: #fff;
+            /* Couleur de texte pour le message d'erreur */
+            padding: 10px;
+            margin: 20px auto;
+            border-radius: 5px;
+            width: 70%;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+
+    <!-- ======= Mobile nav toggle button ======= -->
+    <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+    <!-- ======= Header ======= -->
+    <header id="header">
+        <div class="d-flex flex-column">
+            <div class="profile">
+                <h1 class="rotate">CryptoWarEnigma</h1>
+                <h1 class="text-light"><a href="{% url 'home' %}">{{username}}</a></h1>
+            </div>
+
+            <nav id="navbar" class="nav-menu navbar">
+                <ul>
+                    <li><a href="{% url 'home' %}" class="nav-link scrollto active"><i class="bx bx-home"></i>
+                            <span>Home</span></a></li>
+                    <li><a href="#" class="nav-link scrollto"><i class="bx bx-user"></i> <span>check Inbox</span></a>
+                    </li>
+                    <li><a href="#" class=""><i class="bi bi-chat-left-text-fill"></i> <span>New Message</span></a></li>
+
+                    <li><a href="{% url 'attaque_dictionnaire_un_zero_3char_requests'%}" class=""><i
+                                class="bx bx-book-content"></i>
+                            <span>Dictionnaire 0 1 </span></a></li>
+
+                    <li><a href="{% url 'attaque_dictionnaire'%}" class=""><i class="bx bx-book-content"></i>
+                            <span>Dictionnaire number</span></a></li>
+
+                    <li><a href="{% url 'attaque_brute_force_un_zero_3char_requests'%}" class=""><i
+                                class="bx bx-book-content"></i> <span>Brute force 0 1</span></a></li>
+
+                    <li><a href="{% url 'attaque_brute_force_number_requests'%}" class=""><i
+                                class="bx bx-book-content"></i> <span>Brute force number</span></a></li>
+
+                    <li><a href="{% url 'attaque_brute_force_all_char_requests'%}" class=""><i
+                                class="bx bx-book-content"></i> <span>Brute force char</span></a></li>
+                    <li><a href="{% url 'Steganography_encode'%}" class=""><i class="bx bx-book-content"></i>
+                            <span>Stegnographie</span></a></li>
+                    <li><a href="{% url 'Steganography_decode'%}" class=""><i class="bx bx-server"></i> <span>View
+                                Stegnographie</span></a></li>
+                </ul>
+                <ul>
+                    <li><a href="{% url 'logout'%}" class=""><i class="bi bi-box-arrow-left"></i> <span>Log
+                                Out</span></a></li>
+                </ul>
+            </nav><!-- .nav-menu -->
+        </div>
+    </header><!-- End Header -->
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+        <div class="hero-container">
+            <h1>Attaque par bute force</h1>
+            <p>0 et 1 de 3 char</p>
+
+            <form method="post">
+                {% csrf_token %}
+                <label for="username">Nom d'utilisateur:</label>
+                <input type="text" id="username" name="username" required><br><br>
+
+                <input type="submit" value="commencer">
+            </form>
+            <div class="hero-container_message">
+                {% if success %}
+                <p>Résultats de la tentative de connexion :</p>
+                <p>Mot de passe trouvé : {{ password }}</p>
+                <p>Temps d'exécution : {{ temp_execution }} secondes</p>
+                {% endif %}
+
+                {% if nosuccess %}
+                <div class="error-message">
+                    <p>Aucun mot de passe valide trouvé pour cet utilisateur.</p>
+                    <p>Temps d'exécution : {{ temp_execution }} secondes</p>
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </section>
+    <!-- End Hero -->
+    <main id="main">
+
+
+    </main><!-- End #main -->
+
+
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'vendor/purecounter/purecounter_vanilla.js' %}"></script>
+    <script src="{% static 'vendor/aos/aos.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="{% static 'vendor/typed.js/typed.umd.js' %}"></script>
+    <script src="{% static 'vendor/waypoints/noframework.waypoints.js' %}"></script>
+    <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

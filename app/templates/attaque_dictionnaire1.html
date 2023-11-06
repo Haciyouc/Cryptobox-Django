@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Attaque par dictionnaire</title>
+</head>
+<body>
+    <h1>attaque par dictionnaire</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Nom d'utilisateur:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <input type="submit" value="commencer">
+    </form>
+
+    {% if success %}
+    <h2>Résultats de la tentative de connexion :</h2>
+    <p>Mot de passe trouvé : {{ password }}</p>
+    <p>Temps d'exécution : {{ temp_execution }} secondes</p>
+    {% endif %}
+
+    {% if nosuccess %}
+    <h2>Aucun mot de passe valide trouvé.</h2>
+    <p>Temps d'exécution : {{ temp_execution }} secondes</p>
+    {% endif %}
+
+
+</body>
+</html>
