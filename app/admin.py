@@ -21,3 +21,5 @@ class TodoUserAdmin(UserAdmin):
 
 admin.site.unregister(User)
 admin.site.register(User, TodoUserAdmin)
+
+############################################################################################################
