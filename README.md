@@ -31,13 +31,20 @@ Pour installer et exécuter ce projet, suivez les étapes suivantes :
 7. Après avoir installé Django, placez le code téléchargé dans le même répertoire que l'environnement virtuel.
 
 8. Utilisez les commandes suivantes pour vous déplacer dans le répertoire du projet et installer les dépendances à partir du fichier `requirements.txt` :
- ```cd ssadd  ```
- ```pip install -r requirements.txt ```
+ ```
+cd ssadd
+```
+ ```
+ pip install -r requirements.txt
+```
 
 
-10. Synchronisez votre base de données pour la première fois avec la commande :  ```python manage.py migrate ```.
+10. Synchronisez votre base de données pour la première fois avec la commande :
+    ```
+    python manage.py migrate
+    ```.
 
-11. Créez un utilisateur initial nommé "admin" avec le mot de passe "password123" en utilisant la commande :
+12. Créez un utilisateur initial nommé "admin" avec le mot de passe "password123" en utilisant la commande :
  ```
  python manage.py createsuperuser --email admin@exemple.com --username admin
  ```
