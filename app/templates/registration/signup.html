@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>Sign Up</title>
+</head>
+<body>
+    <section>
+        <div class="form-box">
+            <div class="form-value">
+                <form method="post">
+                    {% csrf_token %}
+                    <h2>Sign Up</h2>
+
+                    <div class="inputbox">
+                    <!-- <label for="username">Username</label> -->
+                    <input type="text" placeholder="Username" name="username" id="username">
+                    </div>
+                    <div class="inputbox">
+                         <!--<label for="first_name">first name</label>-->
+                        <input type="text" placeholder="first name" name="first_name" id="first_name">
+                    </div>
+                    <div class="inputbox">
+                       <!-- <label for="last_name">last name</label> -->
+                        <input type="text" placeholder="last name" name="last_name" id="last_name">
+                    </div>
+                    <div class="inputbox">
+                    <!--<label for="email">Email</label>-->
+                    <input type="email" placeholder="Email " name="email" id="email">
+                    </div> 
+                    <div class="inputbox">
+                   <!-- <label for="password1">Password</label> -->
+                    <input type="password" placeholder="Password" id="password1" name="password1">
+                    </div>
+                    <div class="inputbox">
+                   <!-- <label for="password2">Confrom Password</label> -->
+                    <input type="password" placeholder="Confrom Password" id="password2" name="password2">
+                    </div>
+                    <div class="button-container"></div>
+                    <button type="submit">Signup</button>
+                    </div>
+                    
+                        
+                    <div class="register">
+                        <p>Already Have An Account? <a class="nav-link" href="{% url 'login' %}">Log In</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

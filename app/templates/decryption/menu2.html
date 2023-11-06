@@ -1,0 +1,454 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Include Bootstrap JavaScript and Popper.js (if required) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background: black;
+            text-align: center;
+            height: 100vh; 
+        }
+        .container h1 {
+            display: inline-block;
+            margin: 0 auto;
+            margin-bottom: 40px;
+        }
+        
+        .section {
+            background-color: black;
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+            
+        }
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #000;
+            background-color: #fff;
+        }
+        .decrypt-button {
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .decrypt-button:hover {
+            background-color: #444;
+        }
+        
+    </style>
+    
+
+</head>
+<body>
+    <div class="container">
+        <h1>Decryption Interface</h1>
+        <p class="larger-paragraph">Please choose a decryption method and provide the necessary parameters. Select the decryption method from the options provided in the accordion, and fill in the required information such as the encrypted message, operation code, and parameters. Click the "Decrypt" button to get the result. Make sure to choose the appropriate method for your encryption type to ensure successful decryption.</p> <!-- Added a longer paragraph -->
+        <div class="accordion" id="decryptionAccordion">
+            <div class="section">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="decryptionMethod1Heading">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#decryptionMethod1Collapse" aria-expanded="false" aria-controls="decryptionMethod1Collapse">
+                            Mirroir Decryption 
+                        </button>
+                    </h2>
+                    <div id="decryptionMethod1Collapse" class="accordion-collapse collapse" aria-labelledby="decryptionMethod1Heading" data-bs-parent="#decryptionAccordion">
+                        <div class="accordion-body">
+                            <form id="mirroir-decryption-form">
+                                {% csrf_token %}
+                                <label for="encryptedMessage1">Encrypted Message</label>
+                                <input class="input-field" type="text" id="encryptedMessage1" name="encryptedMessage1" value="{{ message_content }}">
+
+                                <button class="decrypt-button">Decrypt</button>
+                                <div class="decrypted-message">
+                                    <label for="result1">Resultat</label>
+                                    <input class="input-field" type="text" id="result1" name="result1">
+                                </div>
+                            </form>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="decryptionMethod2Heading">
+                        <button class="accordion-button collapsed" type"button" data-bs-toggle="collapse" data-bs-target="#decryptionMethod2Collapse" aria-expanded="false" aria-controls="decryptionMethod2Collapse">
+                            Affine Decryption 
+                        </button>
+                    </h2>
+                    <div id="decryptionMethod2Collapse" class="accordion-collapse collapse" aria-labelledby="decryptionMethod2Heading" data-bs-parent="#decryptionAccordion">
+                        <div class="accordion-body">
+                            <form id="affine-decryption-form"> <!-- Add an ID to the form -->
+                                {% csrf_token %}
+                                <label for="encryptedMessage2">Encrypted Message</label>
+                                <input class="input-field" type="text" id="encryptedMessage2" value="{{ message_content }}">
+                                <label for="parameters21">Enter the a</label>
+                                <input class="input-field" type="text" id="parameters21">
+                                <label for="parameters22">Enter the b</label>
+                                <input class="input-field" type="text" id="parameters22">
+                                <button class="decrypt-button">Decrypt</button>
+                                <div class="decrypted-message">
+                                    <label for="result2">Resultat</label>
+                                    <input class="input-field" type="text" id="result2">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="decryptionMethod3Heading">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#decryptionMethod3Collapse" aria-expanded="false" aria-controls="decryptionMethod3Collapse">
+                            Decalage Decryption 
+                        </button>
+                    </h2>
+                    <div id="decryptionMethod3Collapse" class="accordion-collapse collapse" aria-labelledby="decryptionMethod3Heading" data-bs-parent="#decryptionAccordion">
+                        <div class="accordion-body">
+                            <form id="decryption-form">
+                                {% csrf_token %}
+                                <label for="encryptedMessage3">Encrypted Message</label>
+                                <input class="input-field" type="text" id="encryptedMessage3" value="{{ message_content }}">
+                                <label for="parameters3">Sens</label>
+                                <input class="input-field" type="text" id="parameters3">
+                                <button class="decrypt-button">Decrypt</button>
+                                <div class="decrypted-message">
+                                    <label for="result3">Resultat</label>
+                                    <input class="input-field" type="text" id="result3">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="decryptionMethod4Heading">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#decryptionMethod4Collapse" aria-expanded="false" aria-controls="decryptionMethod4Collapse">
+                            Cesar Decryption 
+                        </button>
+                    </h2>
+                    <div id="decryptionMethod4Collapse" class="accordion-collapse collapse" aria-labelledby="decryptionMethod4Heading" data-bs-parent="#decryptionAccordion">
+                        <div class="accordion-body">
+                            <form id="cesar-decryption-form"> <!-- Add an ID to the form -->
+                                {% csrf_token %}
+                                <label for="encryptedMessage4">Encrypted Message</label>
+                                <input class="input-field" type="text" id="encryptedMessage4" value="{{ message_content }}">
+                                <label for="parameters41">Rang</label>
+                                <input class="input-field" type="text" id="parameters41">
+                                <label for="parameters42">Sens</label>
+                                <input class="input-field" type="text" id="parameters42">
+                                <button class="decrypt-button">Decrypt</button>
+                                <div class="decrypted-message">
+                                    <label for="result4">Resultat</label>
+                                    <input class="input-field" type="text" id="result4">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        
+        // Define a flag to track if decryption has occurred
+let decryptionOccurred = false;
+
+document.getElementById("mirroir-decryption-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+    const encryptedMessage = document.getElementById("encryptedMessage1").value;
+    const firstNumberAfterHash = parseInt(encryptedMessage.split("#")[1].charAt(0));
+
+    if (firstNumberAfterHash === 2 && !decryptionOccurred) {
+        decryptionOccurred = true; // Set the flag to true
+        // Decrypt with the Mirroir method
+        fetch("/decrypt_mirroir/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-CSRFToken": csrfToken,
+            },
+            body: new URLSearchParams({
+                encryptedMessage1: encryptedMessage,
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Update the result input field with the decrypted message
+            document.getElementById("result1").value = data.result;
+        });
+    } else {
+        // Play an error sound and log out the user, then redirect
+        playErrorSound(); // Verify the sound-playing logic here
+        logOutUserAndRedirect(csrfToken); // Verify the user logout and redirection logic here
+    }
+});
+
+    
+        // Function to play an error sound (replace with your sound-playing logic)
+        function playErrorSound() {
+            // Example: you can create an Audio element and play an error sound
+            const errorSound = new Audio(`{% static "audio/error.mp3" %}`);
+            errorSound.play();
+            setTimeout(() => {
+                errorSound.pause();
+                errorSound.currentTime = 0; // Reset the sound to the beginning
+            }, 3000); // 5000 milliseconds (5 seconds) duration
+        }
+    
+        // Function to log out the user and redirect (replace with your logout and redirection logic)
+        function logOutUserAndRedirect(csrfToken) {
+            // Example: you can send a POST request to log out and then redirect
+            fetch('/custom_logout/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken,
+                },
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    setTimeout(() => {
+                        window.location.href = "{% url 'home' %}"; // Replace with your home page URL
+                    }, 1500); // Redirect after 3 seconds
+                } else {
+                    console.error('Logout failed');
+                }
+            })
+            .catch(error => {
+                console.error('An error occurred while logging out', error);
+            });
+        }
+    </script>
+    <script>
+        let affineDecryptionOccurred = false;
+
+document.getElementById("affine-decryption-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+    const encryptedMessage = document.getElementById("encryptedMessage2").value;
+    const a = parseInt(document.getElementById("parameters21").value);
+    const b = parseInt(document.getElementById("parameters22").value);
+    const firstNumberAfterHash = parseInt(encryptedMessage.split("#")[1].charAt(0));
+
+    if (firstNumberAfterHash === 1 && !affineDecryptionOccurred) {
+        affineDecryptionOccurred = true;
+        // Decrypt with the Affine method
+        fetch("/decrypt_affine/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-CSRFToken": csrfToken,
+            },
+            body: new URLSearchParams({
+                encrypted_message: encryptedMessage,
+                a: a,
+                b: b
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("result2").value = data.decrypted_message;
+        });
+    } else {
+        playErrorSound();
+        logOutUserAndRedirect(csrfToken);
+    }
+});
+
+
+        function playErrorSound() {
+            // Example: you can create an Audio element and play an error sound
+            const errorSound = new Audio(`{% static "audio/error.mp3" %}`);
+            errorSound.play();
+            setTimeout(() => {
+                errorSound.pause();
+             errorSound.currentTime = 0; // Reset the sound to the beginning
+            }, 3000); // 5000 milliseconds (5 seconds) duration
+        }
+    
+        // Function to log out the user and redirect (replace with your logout and redirection logic)
+        function logOutUserAndRedirect(csrfToken) {
+            // Example: you can send a POST request to log out and then redirect
+            fetch('/custom_logout/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken,
+                },
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    setTimeout(() => {
+                        window.location.href = "{% url 'home' %}"; // Replace with your home page URL
+                    }, 1500); // Redirect after 3 seconds
+                } else {
+                    console.error('Logout failed');
+                }
+            })
+            .catch(error => {
+                console.error('An error occurred while logging out', error);
+            });
+        }
+    </script>
+    <script>
+        let caesarDecryptionOccurred = false;
+
+document.getElementById("cesar-decryption-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+    const encryptedMessage = document.getElementById("encryptedMessage4").value;
+    const decalage = parseInt(document.getElementById("parameters41").value);
+    const direction = document.getElementById("parameters42").value;
+    const firstNumberAfterHash = parseInt(encryptedMessage.split("#")[1].charAt(0));
+
+    if (firstNumberAfterHash === 0 && !caesarDecryptionOccurred) {
+        caesarDecryptionOccurred = true;
+        fetch("/decrypt_cesar/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-CSRFToken": csrfToken,
+            },
+            body: new URLSearchParams({
+                encrypted_message: encryptedMessage,
+                decalage: decalage,
+                direction: direction
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("result4").value = data.decrypted_message;
+        });
+    } else {
+        playErrorSound();
+        logOutUserAndRedirect(csrfToken);
+    }
+});
+
+        function playErrorSound() {
+            // Example: you can create an Audio element and play an error sound
+            const errorSound = new Audio(`{% static "audio/error.mp3" %}`);
+            errorSound.play();
+            setTimeout(() => {
+                errorSound.pause();
+                errorSound.currentTime = 0; // Reset the sound to the beginning
+            }, 3000); // 5000 milliseconds (5 seconds) duration
+        }
+    
+        // Function to log out the user and redirect (replace with your logout and redirection logic)
+        function logOutUserAndRedirect(csrfToken) {
+            // Example: you can send a POST request to log out and then redirect
+            fetch('/custom_logout/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken,
+                },
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    setTimeout(() => {
+                        window.location.href = "{% url 'home' %}"; // Replace with your home page URL
+                    }, 1500); // Redirect after 3 seconds
+                } else {
+                    console.error('Logout failed');
+                }
+            })
+            .catch(error => {
+                console.error('An error occurred while logging out', error);
+            });
+        }
+    </script>
+    <script>
+        let decalageDecryptionOccurred = false;
+
+document.getElementById("decryption-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+    const encryptedMessage = document.getElementById("encryptedMessage3").value;
+    const sense = parseInt(document.getElementById("parameters3").value);
+    const firstNumberAfterHash = parseInt(encryptedMessage.split("#")[1].charAt(0));
+
+    if (firstNumberAfterHash === 3 && !decalageDecryptionOccurred) {
+        decalageDecryptionOccurred = true;
+        fetch("/decrypt_message/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-CSRFToken": csrfToken,
+            },
+            body: new URLSearchParams({
+                encrypted_message: encryptedMessage,
+                sense: sense
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("result3").value = data.decrypted_message;
+        });
+    } else {
+        playErrorSound();
+        logOutUserAndRedirect(csrfToken);
+    }
+});
+
+        function playErrorSound() {
+            // Example: you can create an Audio element and play an error sound
+            const errorSound = new Audio(`{% static "audio/error.mp3" %}`);
+            errorSound.play();
+              // Set a timeout to stop the sound after 5 seconds
+            setTimeout(() => {
+                errorSound.pause();
+                errorSound.currentTime = 0; // Reset the sound to the beginning
+            }, 3000); // 5000 milliseconds (5 seconds) duration
+        }
+    
+        // Function to log out the user and redirect (replace with your logout and redirection logic)
+        function logOutUserAndRedirect(csrfToken) {
+            // Example: you can send a POST request to log out and then redirect
+            fetch('/custom_logout/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken,
+                },
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    setTimeout(() => {
+                        window.location.href = "{% url 'home' %}"; // Replace with your home page URL
+                    }, 1500); // Redirect after 3 seconds
+                } else {
+                    console.error('Logout failed');
+                }
+            })
+            .catch(error => {
+                console.error('An error occurred while logging out', error);
+            });
+        }
+    </script>
+    
+</body>
+</html>

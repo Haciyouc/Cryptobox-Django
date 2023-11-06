@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Maximum Accounts Reached</title>
+    <style>
+        body {
+        background-color: #222;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 50px;
+        }
+        h1 {
+        font-size: 36px;
+        }
+        p {
+        font-size: 18px;
+        margin: 20px 0;
+        }
+        a {
+        color: #3498db;
+        text-decoration: none;
+        }
+        a:hover {
+        text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Maximum Accounts Reached</h1>
+    <p>Sorry, but we have reached the maximum number of accounts that we can accept at this time. Please try again later or contact support if you have any questions.</p>
+    <p><a href="{% url 'login' %}">Go back to the login page</a></p>
+</body>
+</html>

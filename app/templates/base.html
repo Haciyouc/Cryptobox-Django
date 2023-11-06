@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CryptoWarEnigma</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/cryptography.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.0/css/boxicons.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/sidebar.css' %}" rel="stylesheet">
+  <style>
+   #header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 260px;
+      transition: all ease-in-out 0.5s;
+      z-index: 9997;
+      transition: all 0.5s;
+      padding: 0 15px;
+      background: #000205;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+
+    }
+
+    #header::-webkit-scrollbar {
+        width: 0;
+        /* Largeur de la scrollbar à zéro */
+    }
+
+    #header::-webkit-scrollbar-track {
+        background-color: transparent;
+        /* Couleur de la piste de la scrollbar */
+    }
+
+    #header::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        /* Couleur de la poignée de la scrollbar */
+        border: none;
+        /* Supprime la bordure de la poignée */
+        margin-right: -16px;
+        /* Crée un espace réservé pour la barre de défilement invisible */
+    }
+
+  </style>
+     
+  
+<script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=NF-PUg3N6uk44WnIetfFe0Xn1hgxbsxuZo_5VaIi7lUGOpWZmKh8LVrsrRBAiFllx9lMo1KJYsFx9S6TJqNFlJ2to7v4IQ84zYDo6Bcgu48bt1tIYWWGti-80OZMrXUvQM0NHjdp4pOLo2cpMNt9KxqojWTYHbWjW7Es01c28Y9uwpC23AVstlM4udZl6dEZS3MGp9UiWnBsoYTxqRk4cV3cnLn2cm_8IJHlSdJdx5a795qnLDEPz4YE7cVJjk-IS1ybkTm9S9Xgtn1DJt-NEf-U9ZVCIWZngFJdYdKUZUK-Aq_bvqU3kgd5QVq0u5VALdccj55dXlRUCpOjAhMxA04Bf4k2L6stOwAar2ohB10cu6_sje4J_iPxyAQ9UclYNhM28qFLlIfJHf9HNpUJuGINxT0nQpjiBzyYq03yzfJSlKofj4bPKt7eKu8Go_6KwrBdnTkBQtEPxmywtVOyQ3jg2NcrZKeA32yrVR8FOLYvBRleHsbzE_N4caBipGN1oLhlY1Q-z_EbipKnzZYqHthJRdmA0E41QA5vUJoJOEbw-yyNyEcPJk0NZJeG1Cc7ZlKyctbh-XCMgP5PG14rZ--45TCgl400kbGjfgPCW_OJV2aZPw_lCRHmBpgExEtj_Wl0gYW9G93MaUf8Kt_nrbVHJWJzmYLDnkjZvKUwUkBbyeMo4YPI3pBTZbvy_I_QrRej3X5b2BUF_m79ab02Q2jxIf_Z_RkBkFe4JKfUXPDnHE3XYKkvOpYB_Bknnw_HEmRdWVWb89Qde6hcVnMZTBZaP7mQDKIjBAhhorH3T0ee9cxLuAJqkZpiFaOQNZ7N5slJZBttrGhrhWIj0uSR92SWtf5WA0_1pWvTnWUCR-aCurXTpsQodWsZm1pmyycJUcPi_IQcWA_6gVvznWUyR79pCLcdOuA-3VbdM5MIP_lmyupaRvoYIV7KMioRIw7sOl7XffLuoP5xFIkUZvm4RbspjrdDEmG9rRXTqzthKKfodgTmw4YZDsmn60vJo1-ZjeYrqnPti4sLljhD7EA1hYssurZa22w5-0e59ymWQIbehky-CWl6pm1lGZkV1qpIEmaNIRgC_PmzVuiD2v0bc0-Hq9MQyHfrhAYy-_xgjCwsXmdjFJH7-UPq-fzMfcY0s2YmTQ4gpSbaBUeccoFz9pzJfrO3P6VKBgTi7KIXUAHQ03obj7VtVsG0hpoJLCjsSrHwC_e_akqJkHZbTGORZ92G4m4XEO-CNt4DAzNzJlKOMonm_XAMtVd09GGGijiqzcZyC18_IrdJl3Ts1MwC_jwOKDm7JWG-vaay38-ph-4tNXq9qm9Q9hwRjTakFGM8xje5JlLodRC_9QqgYnLWdz8oknjtaeZZScqEpZ7U4mpXalcROshG2JBLuaeQ-PBS2nNFCG0hcciFgJ9KdGVWycC8eGcmnozAQXXuB87Bf5qyu2AhtdOZK_CFT2p-95Ayfnnx_a4htbaKrGLL-dzO29NHzJmROs3-z7-EU0vo1w-L70bADl0KOw6zmTWrLftgOPlCk7JTVwfa-903V6-ye2C2Viul8AVbkfokS8SCxRW6wtSt7cE_apsgloM0DUrQMDTx-nPoOMqFz8WpI42GrRQnv0NKzhdZNR7m-Get2oeiQP2LC_lbGMg4VrRer2ox" nonce="0f00e47b2dc2e0151eaeeb4b0442a58d" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://me.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9tYWlsLWF0dGFjaG1lbnQuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2F0dGFjaG1lbnQvdS8wLz91aT0yJmlrPTA5ZjY2MDExNjImYXR0aWQ9MC4xJnBlcm1tc2dpZD1tc2ctZjoxNzgwNTgyODEyMTk2NjQzMzYzJnRoPTE4YjVlNmEyM2UyNWEyMjMmdmlldz1hdHQmZGlzcD1zYWZlJnJlYWxhdHRpZD1mX2xvM2VqYmM3MCZzYWRkYmF0PUFOR2pkSjlBVnBqTldzUlNHNlpLTUJwcFBTSUpQY3pxYkpCUmZqX3Z6amJUQnV2ZmNUUk91QW1RTGZhVENnb2FMTEJqT0NVUTNBMUt1R1JRelNzT1JWb0RMQ1A0UWRGalBTY2pBSElCS0JsWkNMdzFIc2thdHUxOHlBa3J1dHIxUFRuc2F1YTBtQko4UUltQXpJVVB4Yi00cGpMUzBCTDhPWmgxWlpZSnJ1OVhiaXpNT0ZVX0FfWmtIUmdQSDNFN1FkTjFJaUhaTWhWNXhBUS1PRXVORG1CaVNoZWJ0azk3N0U4aHNlTXR2bnZDTTNKUklIZ1dkRmNQSlNlbXR6VDd5VHpJRU8xcU8yOHQyY2lnX0xRT3g1S3NtWHFkWmtLTThmbXRYLXB2WlhxR1I2VHNXYW5NNHEzXzRpQzExbVFaWlp0emdJUnhucVluMEZiYXJMZkNMUkhjM29VQ09scUJLQ2FqNFROTlVGMTF4enVUaFJkN1JZd1c0ZER5WC1ORHFlVEs3MEZjdWtrWmxSaGN4TUszNEJ6NlZvX05NVXhLTG9NSjFhcXYtX0l3QUdoX2FjZjIzTGY4SnhMVHlILWVTbVdXUkd5aVl2QkY4dnhkc3RnYnBYaGhCUUFQWnEwdVhZWGNCQ0h5ZVpaY2psc0V5b3RNUGUyb3I0SU8xdHVFOUlVZVk0QjBJVGQyV3NoMW8zTkQyZ3UtNEJNa3pvTEdXWENmakxZbFE2MEdCR1NpNW4yTm53ZFFJYVYyMzZLdVh3WWZ3eUg1cmRjdExGOGZydWNqb0RoMmN5WGNFZ0pzc0pGSmdHSTRBS2duWjMxcUxoQ1c0U2VjNGN3Q1pYWnVWSGtPX3ptV05YaU9LR3VfWHdLUTVMdGV1SDhNb19sV05xU1hwWTU5bG5WOTNJN0hWRW53Q2hGZ2t3ZDlOY05GMHFiZm8wUWVMeGVwVWhkWko2bnpFWEJJajRZVXpENy15X1lqbjdPTGVBXzJiUjVqRTVLTUgzRVZuQ09POVBOS0czRUdxSU8tcDNETmlKTXh1NVpsdFRhTWo4WXMyZGVhRXBFOHhpZXZnRks0UUowZ2xvSjZwRVJNaFhPRWxldnczSDYweXM0Rzk3Tkp4MmhjOXh4dU04SDljMTlNWG1lMFVfVndrMllIdzBpbnk2QlJScndyU3RMV25lMWxHZUJ5YnRmaURRckRIRkdrRm5jeHVFb0I2cjhxQW5QMGYybjA3bTluNm1iaFVrajVjTGFXQTR6V3ZUcGNVX3U0WjNiNHlCaHJNQ2RMVlpvV2dCVDdqd1I2T1E0UDRBWFlKTFJ2eWhFc1o0NzRJUzQ1NkZ4MmtIQ0RjRXY5YlgtR2ZYOA"/></head>
+{% block extrahead %}{% endblock %}
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header">
+       <div class="d-flex flex-column">
+          <div class="profile">
+             <h1 class = "rotate">CryptoWarEnigma</h1>
+             <h1 class="text-light"><a href="{% url 'home' %}">{{username}}</a></h1>
+          </div>
+          
+          <nav id="navbar" class="nav-menu navbar">
+            <ul>
+              <li><a href="{% url 'home' %}" class="nav-link scrollto active"><i class="bx bx-home"></i>
+                  <span>Home</span></a></li>
+              <li><a href="{% url 'user_messags' %}" class="nav-link scrollto"><i class="bx bx-user"></i>
+                  <span>Inbox</span></a></li>
+              <li><a href="{% url 'compose_message' %}" class=""><i class="bi bi-chat-left-text-fill"></i> <span>Send
+                    Message</span></a></li>
+    
+              <li><a href="{% url 'attaque_dictionnaire_un_zero_3char_requests'%}" class=""><span
+                    class="material-symbols-outlined">
+                    lab_profile
+                  </span>
+                  <span> Dictionnaire 0 1 </span></a></li>
+    
+              <li><a href="{% url 'attaque_dictionnaire'%}" class=""><span class="material-symbols-outlined">
+                    export_notes
+                  </span>
+                  <span> Dictionnaire number</span></a></li>
+    
+              <li><a href="{% url 'attaque_brute_force_un_zero_3char_requests'%}" class=""><span
+                    class="material-symbols-outlined">
+                    mitre
+                  </span> <span> Force brute  0 1</span></a></li>
+    
+              <li><a href="{% url 'attaque_brute_force_number_requests'%}" class=""><span class="material-symbols-outlined">
+                    nfc
+                  </span>
+                  <span> Force brute  number</span></a></li>
+    
+              <li><a href="{% url 'attaque_brute_force_all_char_requests'%}" class=""><i class="bx bx-book-content"></i>
+                  <span>Force brute char</span></a></li>
+              <li><a href="{% url 'Steganography_encode'%}" class=""><span class="material-symbols-outlined">
+                rear_camera
+                </span>
+                  <span> steganographie</span></a></li>
+              <li><a href="{% url 'Steganography_decode'%}" class=""><i class="bx bx-server"></i> <span> View
+                    steganographie</span></a></li>
+            </ul>
+            <ul>
+              <li><a href="{% url 'logout'%}" class=""><i class="bi bi-box-arrow-left"></i> <span>Log
+                    Out</span></a></li>
+            </ul>
+          </nav><!-- .nav-menu -->
+     </div>
+    </header><!-- End Header -->
+    <main>
+       {% block content %}
+
+       {% endblock %}
+    </main>
+</body>
+</html>

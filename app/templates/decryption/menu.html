@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .section {
+            background-color: white;
+            color: black;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #000;
+            background-color: #fff;
+        }
+        .decrypt-button {
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .decrypt-button:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Decryption Result</h1>
+        <div class="accordion" id="decryptionAccordion">
+        <div class="section">
+            <h2>Mirror Decryption</h2>
+            <input class="input-field" type="text" placeholder="Encrypted Message" value="{{ message_content }}">
+            <input class="input-field" type="text" placeholder="Operation Code">
+            <input class="input-field" type="text" placeholder="Parameters">
+            <button class="decrypt-button">Decrypt</button>
+            <div class="decrypted-message">
+                <input class="input-field" type="text" placeholder="Resulta">
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Affine Decryption</h2>
+            <!-- Repeat the same structure for other decryption methods -->
+            <input class="input-field" type="text" placeholder="Encrypted Message" value="{{ message_content }}">
+            <input class="input-field" type="text" placeholder="Operation Code">
+            <input class="input-field" type="text" placeholder="Parameters">
+            <button class="decrypt-button">Decrypt</button>
+            <div class="decrypted-message">
+                <input class="input-field" type="text" placeholder="Resulta">
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Shift (Cesar) Decryption</h2>
+            <!-- Repeat the same structure for other decryption methods -->
+            <input class="input-field" type="text" placeholder="Encrypted Message" value="{{ message_content }}">
+            <input class="input-field" type="text" placeholder="Operation Code">
+            <input class="input-field" type="text" placeholder="Parameters">
+            <button class="decrypt-button">Decrypt</button>
+            <div class="decrypted-message">
+                <input class="input-field" type="text" placeholder="Resulta">
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Decalage Decryption</h2>
+            <!-- Repeat the same structure for other decryption methods -->
+            <input class="input-field" type="text" placeholder="Encrypted Message" value="{{ message_content }}">
+            <input class="input-field" type="text" placeholder="Operation Code">
+            <input class="input-field" type="text" placeholder="Parameters">
+            <button class="decrypt-button">Decrypt</button>
+            <div class="decrypted-message">
+                <input class="input-field" type="text" placeholder="Resulta">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

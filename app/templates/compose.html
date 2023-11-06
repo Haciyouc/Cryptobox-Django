@@ -1,0 +1,155 @@
+{% extends 'base.html' %} 
+{% block extrahead %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+    body {
+        background-color: #000205; /* Dark background color */
+        color: #fff; /* Light text color */
+        font-family: poppins, sans-serif;
+    }
+    
+    h2 {
+        text-align: center;
+        margin-top:5px;
+        margin-bottom:15px;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #201f1f; /* Dark form background color */
+        border: 1px solid #444; /* Dark border color */
+        border-radius: 15px; /* Increased border radius for depth */
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Increased box shadow for depth */
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+
+    input[type="text"], select {
+        background-color: #555;
+        border: none;
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        font-family: 'poppins', sans-serif;
+        margin-bottom: 10px;
+        width: 80%;
+    }
+    input[type="number"]{
+        background-color: #555;
+        border: none;
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        font-family: 'poppins', sans-serif;
+        margin-bottom: 10px;
+        width:50%;
+    }
+
+
+
+
+    textarea {
+        background-color: #fff;
+        font-family: 'poppins', sans-serif;
+        border-radius: 5px;
+        margin-bottom:0;
+        padding:10px;
+    }
+
+    button {
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'poppins', sans-serif;
+        margin-top: 0;
+        background: #fff;
+        outline: none;
+        cursor: pointer;
+        font-size: 1em;
+        font-weight: 600;
+        position:relative;
+        left: 287px;
+    }
+    
+    button:hover {
+        background-color: #555;
+    }
+    a {
+        color: #007BFF; /* Blue link color */
+        text-decoration: none;
+    }
+
+    .error-message {
+        background-color: #ff0000; /* Rouge pour la boîte d'erreur */
+        color: #fff; /* Texte blanc */
+        border-radius: 10px; /* Rayon de bordure arrondi */
+        padding: 10px; /* Espacement intérieur */
+        position:relative;
+        margin-top:10px;
+        left:260px;
+        width:78%;
+        margin-left:0;
+        text-align: center; /* Centrer le texte dans la boîte */
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Initially, hide both encryption key and encryption direction fields
+            $('#id_encryption_key').parent().hide();
+            $('#id_encryptionb_key').parent().hide();
+            $('#id_encryption_direction').parent().hide();
+
+            // Add change event listener to the encryption method select field
+            $('#id_encryption_method').on('change', function () {
+                var selectedMethod = $(this).val();
+                if (selectedMethod === 'cesar') {
+                    $('#id_encryption_key').parent().show();
+                    $('#id_encryptionb_key').parent().hide();
+                    $('#id_encryption_direction').parent().show();
+                } else if (selectedMethod === 'mirror') {
+                    $('#id_encryption_key').parent().hide();
+                    $('#id_encryptionb_key').parent().hide();
+                    $('#id_encryption_direction').parent().hide();
+                } else if(selectedMethod === 'shift') {
+                    $('#id_encryption_key').parent().hide();
+                    $('#id_encryptionb_key').parent().hide();
+                    $('#id_encryption_direction').parent().show();
+                } else if(selectedMethod === 'affine') {
+                    $('#id_encryption_key').parent().show();
+                    $('#id_encryptionb_key').parent().show();
+                    $('#id_encryption_direction').parent().hide();
+                } else if(selectedMethod === '') {
+                    $('#id_encryption_key').parent().hide();
+                    $('#id_encryptionb_key').parent().hide();
+                    $('#id_encryption_direction').parent().hide();
+                }
+            });
+        });
+    </script>
+{% endblock %}
+{% block content %}
+
+    <h2>Compose Message</h2>
+    {% if error_message %}
+    <div class="error-message">
+        {{ error_message }}
+    </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Send</button>
+    </form>
+
+{% endblock %}
