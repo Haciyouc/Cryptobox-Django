@@ -4,13 +4,9 @@ from django.contrib.auth import login,authenticate, logout
 from django.contrib.auth.models import User
 from .forms import CustomLoginForm
 from .models import TodoUserProfile, Message 
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-import time, itertools, mimetypes, string, cv2, tempfile
+import time, itertools, string, tempfile
 import numpy as np
 import os
-from django.core.files.base import ContentFile
-from io import BytesIO
 from django.core.files.storage import default_storage
 from django.utils.text import slugify
 import requests
@@ -425,7 +421,7 @@ def Steganography_encode(request):
         # par défaut du système d'exploitation. 
 
         # Enregistrez l'image encodée dans un fichier temporaire
-        cv2.imwrite(output_image, encoded_image)
+        ##cv2.imwrite(output_image, encoded_image)
         
         #En résumé, ce code configure l'en-tête de la réponse HTTP pour permettre le téléchargement 
         # d'un fichier image encodée par l'utilisateur, avec un nom de fichier personnalisé.
@@ -452,8 +448,8 @@ def Steganography_encode(request):
 
 
 def encode(image_name, secret_data):
-    image = cv2.imread(image_name) 
-    n_bytes = image.shape[0] * image.shape[1] * 3 // 8
+    ##image = cv2.imread(image_name) 
+    n_bytes = image_name.shape[0] * image_name.shape[1] * 3 // 8
     if len(secret_data) > (n_bytes - 6):
         return None, "[!] Insufficient bytes, need a bigger image or less data."
 
@@ -506,10 +502,10 @@ def Steganography_decode(request):
     return render(request, 'Steganographydecode.html')
 
 def decode(image_name):
-    image = cv2.imread(image_name) 
+    ##image = cv2.imread(image_name) 
     decoded_data = ""
     binary_data = ""
-    flat_image = image.reshape(-1, 1)
+    flat_image = image_name.reshape(-1, 1)
     for valeur_cellule in flat_image: 
         binary_data += str(valeur_cellule[-1] & 1)
 
