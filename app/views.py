@@ -17,8 +17,8 @@ import requests
 from django.db.models import F
 
 
-chemin_dictionnaire = "C:\password_3char_01.txt"
-chemin_dictionnaire1 = "C:\password_5char_number.txt"
+chemin_dictionnaire = " "
+chemin_dictionnaire1 = " "
 
 caracteres_all = string.ascii_letters + string.digits + string.punctuation
 caracteres_number = string.digits
